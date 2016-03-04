@@ -20,6 +20,10 @@
           </button>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Galvanize Eats</a></li>
+            <li><a href="#"></a></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Home</a></li>
             <li><a href="#">Order Food</a></li>
@@ -29,7 +33,7 @@
     </nav>
     <div class="container">
       <div class="page-header">
-        <h1>Eat Some Food. <small>Your Mom would want you to.</small></h1>
+        <h1>Order Some Food. <small>It's the first step on your path to ending your hunger.</small></h1>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -37,13 +41,76 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-9">
           <h3>Hungry? <small>We have a solution for you.</small></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <form>
+            <fieldset class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <small class="text-muted">We'll never share your email with anyone else.</small>
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="exampleSelect1">Example select</label>
+              <select class="form-control" id="exampleSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="exampleSelect2">Example multiple select</label>
+              <select multiple class="form-control" id="exampleSelect2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="exampleTextarea">Example textarea</label>
+              <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" class="form-control-file" id="exampleInputFile">
+              <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+            </fieldset>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                Option one is this and that&mdash;be sure to include why it's great
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                Option two can be something else and selecting it will deselect option one
+              </label>
+            </div>
+            <div class="radio disabled">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                Option three is disabled
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Check me out
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
-        <div class="col-md-6">
-          <h3>Why we are awesome. <small>And how you can join our cool kids club.</small></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante"</p>
+        <div class="col-md-3">
+          <h3>Order List Goes here <small>We have a solution for you.</small></h3>
+          <p>Using our convenient web app, you'll get all the power of gFood without having to call your order in. Order in your pajamas, order 24hours a day, order on Christmas, we're here to serve you.</p>
         </div>
       </div>
       <div class="row">
