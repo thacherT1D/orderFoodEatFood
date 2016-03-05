@@ -1,17 +1,17 @@
 'use strict';
-$(document).ready(function(){
-    function eventHandler(event) {
-      var foodName = $('form label innerText')
-      console.log(foodName);
-      if($(this).is(':checked') === true){
-        console.log('checked!!!');
-        $( ".orderWindow" ).append();
-      } else {console.log('nothing')}
-      console.log()
-    }
-    $('form input').on('click', eventHandler);
-
-})
+// $(document).ready(function(){
+//     function eventHandler(event) {
+//       var foodName = $('form label innerText')
+//       console.log(foodName);
+//       if($(this).is(':checked') === true){
+//         console.log('checked!!!');
+//         $( ".orderWindow" ).append();
+//       } else {console.log('nothing')}
+//       console.log()
+//     }
+//     $('form input').on('click', eventHandler);
+//
+// })
 
 
 $( document ).ready(function() {
@@ -41,7 +41,6 @@ $( document ).ready(function() {
         // function itemToOrder (event) {
         //   var itemTotalCost =
         // }
-        //
         // $("#addToOrder").on('click', )
       })
     }
