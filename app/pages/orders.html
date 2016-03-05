@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Order Food from Galvanize Eats</title>
+    <link rel="stylesheet" href="../style.css"/>
     <script src="https://code.jquery.com/jquery-2.2.1.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Latest compiled and minified JavaScript -->
@@ -38,13 +39,69 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <img src="http://lorempixel.com/1000/200/" alt="Picture of delicious food">
+          <img src="http://i.imgur.com/nXa5Dez.jpg" alt="burgers">
         </div>
       </div>
       <div class="row">
         <div class="col-md-8">
           <h3>Hungry? <small>We have a solution for you.</small></h3>
+          <!-- FORM STARTS HERE -->
           <form action="" method="get">
+            <h4>Menu</h4>
+            <div><p class="menuDownload"></p></div>
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="currentItem"><span>Item Name:</span>
+                </br>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <fieldset class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input type="text" class="form-control" id="Quantity" name="Quantity">
+                </fieldset>
+              </div>
+              <div class="col-md-2">
+                <button type="Add" class="btn btn-primary">Add to Order</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+
+
+
+            <!-- <label class="c-input c-checkbox">
+              <input type="checkbox" name="Hamburger" id="hamburger" price=10.99>
+              <span class="c-indicator"></span>
+              Hamburger ($10)
+            </label>
+            </br>
+            <label class="c-input c-checkbox">
+              <input type="checkbox" id="cheeseburger">
+              <span class="c-indicator"></span>
+              Cheeseburger ($12)
+            </label>
+            </br>
+            <label class="c-input c-checkbox">
+              <input type="checkbox" id="cheesepizza">
+              <span class="c-indicator"></span>
+              Cheese Pizza ($14)
+            </label>
+            </br>
+            <label class="c-input c-checkbox">
+              <input type="checkbox" id="pepperonipizza">
+              <span class="c-indicator"></span>
+              Pepperoni Pizza ($14)
+            </label>
+            </br> -->
             <fieldset class="form-group">
               <label for="Name">Name</label>
               <input type="text" class="form-control" id="Name">
@@ -62,16 +119,18 @@
               <label for="PhoneNumber">Phone Number</label>
               <input type="number" class="form-control" id="PhoneNumber">
             </fieldset>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Delivery It!</button>
           </form>
         </div>
         <div class="col-md-4">
           <h3>Order List Goes here <small>We have a solution for you.</small></h3>
-          <p>Using our convenient web app, you'll get all the power of gFood without having to call your order in. Order in your pajamas, order 24hours a day, order on Christmas, we're here to serve you.</p>
+          <div>
+          <p class="orderWindow"></p>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Delivery It!</button>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 text-center"><hr><h4>Wanna get lunch? Email us at BigCheese@galvanizeeats.com</h4><hr>
+        <div class="col-md-12 text-center"><hr><h4>Having trouble ordering? Email us at helpme@galvanizeeats.com</h4><hr>
         </div>
       </div>
       <div class="row">
@@ -84,6 +143,8 @@
       </div>
       <div class="row">
         <div class="col-md-12 text-center"><p><small>&copy; Eat food and Be Happy.</small></p>
+        </div>
+        <div class="col-md-12 text-center"><p><small>Made with Love in Seattle.</small></p>
         </div>
       </div>
     </div>
