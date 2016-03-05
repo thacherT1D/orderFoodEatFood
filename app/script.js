@@ -27,19 +27,22 @@ $( document ).ready(function() {
         var $element = $('<p>');
         $element.text(data.name + " ($" + data.price + ")");
 
-        // $element.text(data.price);
-        // $element.text(data.type);
-
         $( ".menuDownload" ).append($element);
 
         function menuClick (event) {
-          // $( ".orderWindow" ).append();
           $( ".currentItem" ).append(data.name);
+          var currentItem = data.name;
+          var currentItemPrice = data.price;
           console.log(event);
         }
 
-
         $element.on('click', menuClick);
+
+        function itemToOrder (event) {
+          var itemTotalCost = 
+        }
+
+        $("#addToOrder").on('click', )
       })
     }
   })
