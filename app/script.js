@@ -38,11 +38,11 @@ $( document ).ready(function() {
 
         $element.on('click', menuClick);
 
-        function itemToOrder (event) {
-          var itemTotalCost = 
-        }
-
-        $("#addToOrder").on('click', )
+        // function itemToOrder (event) {
+        //   var itemTotalCost =
+        // }
+        //
+        // $("#addToOrder").on('click', )
       })
     }
   })
