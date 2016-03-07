@@ -1,18 +1,4 @@
 'use strict';
-// $(document).ready(function(){
-//     function eventHandler(event) {
-//       var foodName = $('form label innerText')
-//       console.log(foodName);
-//       if($(this).is(':checked') === true){
-//         console.log('checked!!!');
-//         $( ".orderWindow" ).append();
-//       } else {console.log('nothing')}
-//       console.log()
-//     }
-//     $('form input').on('click', eventHandler);
-//
-// })
-
 
 $( document ).ready(function() {
   $.ajax({
@@ -35,17 +21,16 @@ $( document ).ready(function() {
           var currentItemPrice = data.price;
           console.log(event);
         }
-
         $element.on('click', menuClick);
-
-        // function itemToOrder (event) {
-        //   var itemTotalCost =
-        // }
-        // $("#addToOrder").on('click', )
       })
     }
   })
 });
+// function itemToOrder (event) {
+//   var itemTotalCost =
+// }
+// $("#addToOrder").on('click', )
+
 
 // $( document ).ready(function() {
 // $.ajax({
