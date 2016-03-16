@@ -5,7 +5,7 @@ $( document ).ready(function() {
     url: "https://galvanize-eats-api.herokuapp.com/menu",
     method: "GET",
     success: function (data){
-      console.log(data.menu);
+      // console.log(data.menu);
       var menu = data.menu;
       // console.log(data.menu.id);
 
@@ -16,10 +16,16 @@ $( document ).ready(function() {
         $( ".menuDownload" ).append($element);
 
         function menuClick (event) {
-          $( ".currentItem" ).append(data.name);
+          // $( ".currentItem" ).append(data.name);
+          $("p").removeClass('addToOrder');
+          $element.addClass('addToOrder');
+
+          console.log(data.name);
+          console.log(data.price);
+
           var currentItem = data.name;
           var currentItemPrice = data.price;
-          console.log(event);
+          // console.log(event);
         }
         $element.on('click', menuClick);
       })
