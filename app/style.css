@@ -9,6 +9,10 @@ span {
   font-weight: bold;
 }
 
-.addToOrder {
+.highlightitem {
   background-color: yellow;
+}
+
+.orderButton {
+
 }

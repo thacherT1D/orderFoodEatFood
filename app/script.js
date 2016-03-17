@@ -5,37 +5,52 @@ $( document ).ready(function() {
     url: "https://galvanize-eats-api.herokuapp.com/menu",
     method: "GET",
     success: function (data){
-      // console.log(data.menu);
       var menu = data.menu;
-      // console.log(data.menu.id);
+      console.log(data.menu);
+      var currentItem;
+      var currentItemPrice;
 
       (data.menu).forEach( function (data) {
         var $element = $('<p>');
-        $element.text(data.name + " ($" + data.price + ")");
+        var menuArray = [];
+        $element.text(data.name)
+      });
 
+
+      (data.menu).forEach( function (data) {
+        var $element = $('<p>');
+        // $element.text(data.name + "$" + data.price + "");
+        $element.text(data.name);
         $( ".menuDownload" ).append($element);
+      });
 
-        function menuClick (event) {
-          // $( ".currentItem" ).append(data.name);
-          $("p").removeClass('addToOrder');
-          $element.addClass('addToOrder');
+      function menuClick (event) {
+        var currentItem = $(event.target).html();
+        console.log(currentItem);
 
-          console.log(data.name);
-          console.log(data.price);
+        $('.menuDownload').removeClass('highlightitem');
+        $('p').removeClass('highlightitem');
+        $(event.target).addClass('highlightitem');
+        $('.menuDownload').removeClass('highlightitem');
+        currentItem = data.name;
+        currentItemPrice = data.price;
+        // console.log(currentItem);
+        // console.log(data.menu[3].name);
+        // console.log(event.target);
+      }
+      $( ".menuDownload" ).on('click', menuClick);
 
-          var currentItem = data.name;
-          var currentItemPrice = data.price;
-          // console.log(event);
-        }
-        $element.on('click', menuClick);
-      })
+      function addToOrder (event) {
+        event.preventDefault();
+        console.log(currentItem);
+      }
+      $('.orderButton').on('click', addToOrder);
+
+
+
     }
   })
 });
-// function itemToOrder (event) {
-//   var itemTotalCost =
-// }
-// $("#addToOrder").on('click', )
 
 
 // $( document ).ready(function() {
