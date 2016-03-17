@@ -7,14 +7,19 @@ $( document ).ready(function() {
     success: function (data){
       var menu = data.menu;
       console.log(data.menu);
+      var list = JSON.stringify(menu);
+      console.log(list);
+
       var currentItem;
       var currentItemPrice;
+      var orderArray = [];
+      var menuObject = {};
 
-      (data.menu).forEach( function (data) {
-        var $element = $('<p>');
-        var menuArray = [];
-        $element.text(data.name)
-      });
+      // (data.menu).forEach( function (data) {
+      //   var $element = $('<p>');
+      //   menuObject['name']= (data.name);
+      //   console.log(menuObject);
+      // });
 
 
       (data.menu).forEach( function (data) {
@@ -26,6 +31,7 @@ $( document ).ready(function() {
 
       function menuClick (event) {
         var currentItem = $(event.target).html();
+        orderArray.push(currentItem);
         console.log(currentItem);
 
         $('.menuDownload').removeClass('highlightitem');
@@ -37,15 +43,25 @@ $( document ).ready(function() {
         // console.log(currentItem);
         // console.log(data.menu[3].name);
         // console.log(event.target);
-      }
+      };
       $( ".menuDownload" ).on('click', menuClick);
 
-      function addToOrder (event) {
-        event.preventDefault();
-        console.log(currentItem);
-      }
-      $('.orderButton').on('click', addToOrder);
+      // function addToOrder (event) {
+      //   event.preventDefault();
+      //   // var quan = $('#quantity').val();
+      //   $('.orderWindow').append(currentItem);
+      //   orderArray.push(currentItem);
+      //   console.log(orderArray);
+      // };
+      // $( ".orderButton" ).on('click', addToOrder);
 
+      $('.orderButton').click(function(event){
+        event.preventDefault();
+        $('.orderWindow').append(orderArray);
+        // orderArray.push(currentItem);
+        console.log(orderArray);
+        orderArray = [];
+      });
 
 
     }
