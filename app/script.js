@@ -6,65 +6,86 @@ $( document ).ready(function() {
     method: "GET",
     success: function (data){
       var menu = data.menu;
-      console.log(data.menu);
-      var list = JSON.stringify(menu);
-      console.log(list);
+      // console.log(data.menu);
 
       var currentItem;
       var currentItemPrice;
       var orderArray = [];
-      var menuObject = {};
-
-      // (data.menu).forEach( function (data) {
-      //   var $element = $('<p>');
-      //   menuObject['name']= (data.name);
-      //   console.log(menuObject);
-      // });
+      var orderObject = {};
+      var quanItem;
+      var orderItem = {};
+      var itemQuanCost;
 
       (data.menu).forEach( function (data) {
         var $element = $('<p>');
-        // $element.text(data.name + "$" + data.price + "");
-        $element.text(data.name);
-        $( ".menuDownload" ).append($element);
+        $('<p data-price=' + data.price + '>' + data.name + '</p>');
+        console.log($('<p data-price=' + data.price + '>' + data.name + '</p>'));
+
+
+        
+        $element.id = data.price;
+
+        // console.log($element.text(data.name));
+        // console.log(data.price);
+        console.log($element.id);
+
+        $( ".menuDownload" ).append($element.text(data.name));
+
       });
 
       function menuClick (event) {
-        var currentItem = $(event.target).html();
-        orderArray.push(currentItem);
+        currentItem = $(event.target).html();
         console.log(currentItem);
+        console.log($(event.target).data('price'));
+
+        currentItemPrice = $(event.target).data('price');
 
         $('.menuDownload').removeClass('highlightitem');
         $('p').removeClass('highlightitem');
         $(event.target).addClass('highlightitem');
         $('.menuDownload').removeClass('highlightitem');
-        currentItem = data.name;
-        currentItemPrice = data.price;
-        // console.log(currentItem);
-        // console.log(data.menu[3].name);
-        // console.log(event.target);
+
       };
       $( ".menuDownload" ).on('click', menuClick);
 
       function addToOrder (event) {
-      event.preventDefault();
-//       var orderWindow = document.getElementById('orderWindow');
-//       var element = document.createElement('p');
-// element.html('hello');
-//       orderWindow.appendChild(element);
+        event.preventDefault();
+        quanItem = $('#quantity')[0].value;
+        console.log(quanItem);
+        // itemQuanCost = quanItem * a;
 
-      $('.orderWindow').append(orderArray);
-      // console.log(orderArray);
-      orderArray = [];
+
+        orderItem = {
+          name: currentItem,
+          quantity: quanItem,
+        };
+        console.log(orderItem);
+        orderArray.push(orderItem);
+        // orderArray.push(currentItem);
+        console.log(orderArray);
+
+        // $('#orderPreview').append(currentItem);
+        var ul = document.getElementById("list");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(currentItem + ' (' + quanItem + ')'));
+        ul.appendChild(li);
       };
       $( ".orderButton" ).on('click', addToOrder);
 
-      // $('.orderButton').click(function(event){
-      //   event.preventDefault();
-      //   $('.orderWindow').append(orderArray);
-      //   console.log(orderArray);
-      //   orderArray = [];
-      // });
+      function deliverIt (event) {
+        event.preventDefault();
+        // console.log(event);
+        var person = {
+          name: $('#name')[0].value,
+          emailAddress: $('#inputEmail')[0].value,
+          address: $('#address')[0].value,
+          phoneNumber: $('#phoneNumber')[0].value
+        };
 
+        console.log(person);
+//Add Form Reset
+      };
+      $( "#deliverItButton" ).on('click', deliverIt);
 
     }
   })
