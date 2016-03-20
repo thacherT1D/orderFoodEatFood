@@ -15,19 +15,12 @@ $( document ).ready(function() {
       var quanItem;
       var orderItem = {};
       var itemQuanCost;
+      var itemTotal;
 
       (data.menu).forEach( function (data) {
-        var $element = $('<p>');
-        $('<p data-price=' + data.price + '>' + data.name + '</p>');
-        console.log($('<p data-price=' + data.price + '>' + data.name + '</p>'));
-
-
-        
-        $element.id = data.price;
-
-        // console.log($element.text(data.name));
-        // console.log(data.price);
-        console.log($element.id);
+        // var $element = $('<p>');
+        // $('<p data-price="' + data.price + '">' + data.name + '</p>');
+        var $element = $('<p data-price="' + data.price + '">' + data.name + '</p>');
 
         $( ".menuDownload" ).append($element.text(data.name));
 
@@ -35,10 +28,11 @@ $( document ).ready(function() {
 
       function menuClick (event) {
         currentItem = $(event.target).html();
-        console.log(currentItem);
-        console.log($(event.target).data('price'));
+        // console.log(currentItem);
+        // console.log($(event.target).data('price'));
 
         currentItemPrice = $(event.target).data('price');
+        // console.log(currentItemPrice);
 
         $('.menuDownload').removeClass('highlightitem');
         $('p').removeClass('highlightitem');
@@ -51,24 +45,29 @@ $( document ).ready(function() {
       function addToOrder (event) {
         event.preventDefault();
         quanItem = $('#quantity')[0].value;
-        console.log(quanItem);
+        // console.log(quanItem);
         // itemQuanCost = quanItem * a;
-
+        itemTotal = currentItemPrice * quanItem;
 
         orderItem = {
           name: currentItem,
           quantity: quanItem,
+          price: currentItemPrice,
+          fullPrice: itemTotal,
         };
-        console.log(orderItem);
+        // console.log(orderItem);
         orderArray.push(orderItem);
         // orderArray.push(currentItem);
-        console.log(orderArray);
+        // console.log(orderArray);
 
         // $('#orderPreview').append(currentItem);
         var ul = document.getElementById("list");
         var li = document.createElement("li");
         li.appendChild(document.createTextNode(currentItem + ' (' + quanItem + ')'));
         ul.appendChild(li);
+
+        $('p').removeClass('highlightitem');
+        $('#quantity')[0].value = 1;
       };
       $( ".orderButton" ).on('click', addToOrder);
 
@@ -82,7 +81,13 @@ $( document ).ready(function() {
           phoneNumber: $('#phoneNumber')[0].value
         };
 
-        console.log(person);
+        // console.log(person);
+        // console.log(orderArray);
+        orderObject = {
+          deliverTo: person,
+          food: orderArray,
+        }
+        console.log(orderObject);
 //Add Form Reset
       };
       $( "#deliverItButton" ).on('click', deliverIt);
@@ -92,13 +97,13 @@ $( document ).ready(function() {
 });
 
 
-// $( document ).ready(function() {
-// $.ajax({
-//   method: "POST",
-//   url: "https://galvanize-eats-api.herokuapp.com/orders",
-//   data: { name: "Pizza", price: 10.99, type: "pizza" }
-// })
-//   .done(function( msg ) {
-//     alert( "Data Saved: " + msg );
-// });
-// });
+$( document ).ready(function() {
+$.ajax({
+  method: "POST",
+  url: "https://galvanize-eats-api.herokuapp.com/orders",
+  data: {order: orderObject},
+})
+  .done(function( msg ) {
+    alert( "Data Saved: " + msg );
+});
+});
