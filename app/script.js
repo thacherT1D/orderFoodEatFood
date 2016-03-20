@@ -54,8 +54,6 @@ $( document ).ready(function() {
       function addToOrder (event) {
         event.preventDefault();
         quanItem = $('#quantity')[0].value;
-        // console.log(quanItem);
-        // itemQuanCost = quanItem * a;
         itemTotal = currentItemPrice * quanItem;
 
         orderItem = {
@@ -64,12 +62,9 @@ $( document ).ready(function() {
           price: currentItemPrice,
           fullPrice: itemTotal,
         };
-        // console.log(orderItem);
-        orderArray.push(orderItem);
-        // orderArray.push(currentItem);
-        // console.log(orderArray);
 
-        // $('#orderPreview').append(currentItem);
+        orderArray.push(orderItem);
+
         var ul = document.getElementById("list");
         var li = document.createElement("li");
         li.appendChild(document.createTextNode(currentItem + ' (' + quanItem + ')'));
@@ -82,7 +77,6 @@ $( document ).ready(function() {
 
       function deliverIt (event) {
         event.preventDefault();
-        // console.log(event);
         var person = {
           name: $('#name')[0].value,
           emailAddress: $('#inputEmail')[0].value,
@@ -90,28 +84,24 @@ $( document ).ready(function() {
           phoneNumber: $('#phoneNumber')[0].value
         };
 
-        // console.log(person);
-        // console.log(orderArray);
         orderObject = {
           deliverTo: person,
           food: orderArray,
         }
-
+        console.log(orderObject);
+        $.ajax({
+          method: "POST",
+          url: "https://galvanize-eats-api.herokuapp.com/orders",
+          data: {order: orderObject},
+        })
+          .done(function( msg ) {
+            alert( "Data Saved: " + msg );
+        });
 //Add Form Reset
       };
       $( "#deliverItButton" ).on('click', deliverIt);
 
     }
   })
-console.log(orderObject);
-
-  $.ajax({
-    method: "POST",
-    url: "https://galvanize-eats-api.herokuapp.com/orders",
-    data: {order: orderObject},
-  })
-    .done(function( msg ) {
-      alert( "Data Saved: " + msg );
-  });
 
 });
