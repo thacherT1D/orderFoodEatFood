@@ -1,6 +1,15 @@
 'use strict';
 
 $( document ).ready(function() {
+  var currentItem;
+  var currentItemPrice;
+  var orderArray = [];
+  var orderObject = {};
+  var quanItem;
+  var orderItem = {};
+  var itemQuanCost;
+  var itemTotal;
+
   $.ajax({
     url: "https://galvanize-eats-api.herokuapp.com/menu",
     method: "GET",
@@ -8,14 +17,14 @@ $( document ).ready(function() {
       var menu = data.menu;
       // console.log(data.menu);
 
-      var currentItem;
-      var currentItemPrice;
-      var orderArray = [];
-      var orderObject = {};
-      var quanItem;
-      var orderItem = {};
-      var itemQuanCost;
-      var itemTotal;
+      // var currentItem;
+      // var currentItemPrice;
+      // var orderArray = [];
+      // var orderObject = {};
+      // var quanItem;
+      // var orderItem = {};
+      // var itemQuanCost;
+      // var itemTotal;
 
       (data.menu).forEach( function (data) {
         // var $element = $('<p>');
@@ -87,23 +96,22 @@ $( document ).ready(function() {
           deliverTo: person,
           food: orderArray,
         }
-        console.log(orderObject);
+
 //Add Form Reset
       };
       $( "#deliverItButton" ).on('click', deliverIt);
 
     }
   })
-});
+console.log(orderObject);
 
+  $.ajax({
+    method: "POST",
+    url: "https://galvanize-eats-api.herokuapp.com/orders",
+    data: {order: orderObject},
+  })
+    .done(function( msg ) {
+      alert( "Data Saved: " + msg );
+  });
 
-$( document ).ready(function() {
-$.ajax({
-  method: "POST",
-  url: "https://galvanize-eats-api.herokuapp.com/orders",
-  data: {order: orderObject},
-})
-  .done(function( msg ) {
-    alert( "Data Saved: " + msg );
-});
 });
